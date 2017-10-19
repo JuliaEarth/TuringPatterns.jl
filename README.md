@@ -1,7 +1,5 @@
 # TuringPatterns
 
-Example:
-
 ```julia
 using TuringPatterns
 
@@ -12,7 +10,7 @@ patterns = [
     SimplePattern(Params(5,   10,  0.02), sz),
     SimplePattern(Params(10,  20,  0.03), sz),
     SimplePattern(Params(20,  40,  0.04), sz),
-    SimplePattern(Params(50, 100, 0.05), sz),
+    SimplePattern(Params(50,  100, 0.05), sz),
 ]
 
 saveframe(
@@ -25,5 +23,11 @@ saveframe(
     "picture.png"
 )
 
+# `open` on macos or `xdg-open` on linux
 run(`open picture.png`)
 ```
+
+
+![A multi-scale Turing pattern](picture.png)
+
+
