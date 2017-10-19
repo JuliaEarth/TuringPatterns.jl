@@ -1,0 +1,274 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:focus {
+  outline: none;
+  // border: 1px solid red;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input {
+  box-sizing: border-box;
+  margin:0;
+  border:0;
+  padding:0;
+  display:inline-block;
+  vertical-align:middle;
+  white-space:normal;
+  background:none;
+  line-height:1;
+
+  /* Browsers have different default form fonts */
+  font: 14px/1.0 "Gill Sans", sans-serif;
+}
+
+
+body {
+  font: 14px/1.0 "Gill Sans", sans-serif;
+  background: #333;
+  margin-top: 15px;
+}
+
+.table {
+  margin-bottom: 20px;
+}
+
+.composite-pattern {
+  position: relative;
+  border-left: 5px solid #000; /* todo */
+}
+/* hacky fix for the effect of the border on
+   positioning. handles up to three levels of nesting. */
+
+.composite-pattern .row { padding: 0 0 0 35px; }
+.composite-pattern .composite-pattern .row { padding: 0 0 0 30px; }
+.composite-pattern .composite-pattern .composite-pattern .row { padding: 0 0 0 25px; }
+
+.patternheight: over .row {
+  background: #F2ECE7;
+}
+
+
+
+
+.coupling-matrix {
+  position: absolute;
+  z-index: 1000;
+  left: calc(100% - 1px);
+  top: 0;
+  background: #EDEDED;
+  height: 100%;
+  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.composite-pattern:hover .coupling-matrix {
+  display: block;
+}
+.coupling-matrix:hover {
+  display: block;
+}
+
+.matrix-cell {
+  width: 49px;
+  height: 50px;
+  line-height: 50px;
+  margin-left: 1px;
+  margin-bottom: 1px;
+  text-align: center;
+  background: #fff;
+  float: left;
+}
+
+
+x.composite-pattern:hover .row {
+  background: #F2ECE7;
+}
+
+x.composite-pattern:hover .pattern:hover .row {
+  background: #F8F3EE;
+}
+
+.pattern .row {
+  background: #fff;
+  margin-bottom: 1px;
+}
+
+.header {
+  background: #545454;
+  color: #fff;
+  font-style: italic;
+}
+
+.row {
+  display: flex;
+  padding: 0 0 0 40px;
+  height: 50px;
+  line-height: 50px;
+}
+
+.cell {
+  flex: 1;
+  white-space: nowrap;
+  width: 100%;
+
+}
+
+.swept {
+  // border-bottom: 1px solid #EA606A;
+  // color: #EA606A;
+  // color: #E3AA89;
+  color: #E3A581;
+  // text-decoration: underline;
+  font-weight: 600;
+}
+
+.image-cell {
+  position: relative;
+  float: left;
+}
+.image-cell .name {
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
+  font-size: 12px;
+  text-align: right;
+  color: #ddd;
+}
+
+.image-cell .shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  box-shadow: inset 0px -50px 50px rgba(0, 0, 0, 0.85);
+}
+
+
+
+.canvas {
+  margin: 0 0 -1px -1px;
+  /* ^ make up for the border offset */
+  flex: 3;
+  height: 100%;
+  background: #000;
+  color: #fff;
+}
+
+.single .image-cell {
+  width: 100%;
+  height: 100%;
+}
+
+.button {
+  cursor: pointer;
+  user-select: none;
+  background: #689ACA;
+  border-radius: 2px;
+  margin: 15px 20px;
+  color: #fff;
+  font-weight: 400; /* semibold */
+  height: 32px;
+  line-height: 32px;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.button:active {
+  color: #ddd;
+}
+
+.button.disabled {
+  background: #B0B4B8;
+}
+
+.inline {
+  padding: 0 20px;
+  position: relative;
+  display: flex;
+}
+.inline .button:first-child {
+  margin-right: auto;
+}
+.inline .button:last-child {
+  margin-left: auto;
+}
+.inline .button {
+  display: inline-block;
+  margin: 0;
+  width: calc(50% - 7px);
+}
+
+.sweep {
+  height: 70px;
+  line-height: 70px;
+  text-align: center;
+  white-space: nowrap;
+  color: #fff;
+  background: #545454;
+  margin: 20px 0;
+}
+
+.sweep .x {
+  color: #9A9A9A;
+  font-weight: 400;
+}
+
+.iterations {
+  margin-top: 20px;
+  height: 40px;
+  line-height: 40px;
+  position: relative;
+  display: flex;
+  padding: 0 20px;
+}
+
+.iterations .label {
+  margin-right: auto;
+  z-index: 1;
+}
+
+.iterations .value {
+  margin-left: auto;
+  text-align: right;
+  z-index: 1;
+  width: 50px;
+}
+
+.iterations .bg {
+  position: absolute;
+  left: 0;
+  background: #fff;
+  width: 100%;
+  height: 40px;
+  z-index: 0;
+}
+
+.patternshop {
+    display: flex;
+    width:1024px;
+
+
+    height: 768px;
+    max-width:1024px;
+    max-height: 768px;
+    margin: 0 auto;
+}
+
+.sidebar {
+  flex: 1;
+  height: 100%;
+  background: #EDEDED;
+}
