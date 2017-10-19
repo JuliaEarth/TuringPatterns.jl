@@ -2,10 +2,12 @@ module TuringPatterns
 
 include("util.jl")
 include("blur.jl")
+include("export.jl")
 
 export Pattern, Params, SimplePattern, CompositePattern
-export Sim, step!
+export Sim, step!, simulate
 export Zero, Clamp, BoxBlur, IteratedBoxBlur
+export saveframe, saveframes, scale01
 
 
 "An N-dimensional Turing pattern"
@@ -90,6 +92,15 @@ function step!(sim::Sim)
 
     # Re-normalize the fluid to [-1, 1]
     signed_scale01!(sim.fluid)
+end
+
+"Convenience method to simulate a set of patterns from some initial conditions"
+function simulate(initial, patterns, blur, iters)
+    sim = Sim(initial, patterns, Clamp(), blur)
+    @time for i in 1:iters
+        step!(sim)
+    end
+    scale01(sim.fluid)
 end
 
 end # module

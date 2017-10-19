@@ -1,36 +1,21 @@
 # Patternshop is a sort of Photoshop for exploring Turing patterns.
 # The name is temporary until I think of something I like better.
 
-include("export.jl")
-include("util.jl")
-include("TuringPatterns.jl")
-
 using TuringPatterns
-using HTTP
-using JSON
+using HTTP, JSON
 
-function simulate(initial, patterns, blur, nsteps)
-    sim = Sim(initial, patterns, Clamp(), blur)
-    @time for i in 1:nsteps
-        step!(sim)
-    end
-    scale01(sim.fluid)
-end
+write2d(stream, frame) = save(FileIO.DataFormat{:PNG}, stream, Gray.(frame))
 
-function write2d(stream, frame)
-    save(FileIO.DataFormat{:PNG}, stream, Gray.(frame))
-end
-
+# Parameter sweeping
 swept(v, x, y) = v
 swept(v::Dict, x, y) = haskey(v, "xsweep") ? v["xsweep"][x] : v["ysweep"][y]
-# todo: can we use pairs in 1.0?
+# todo: can we use `pairs` in 1.0?
 sweep!(d::Dict, x, y) = for (key, val) in d
     d[key] = swept(val, x, y)
 end
 sweep!(d::Array, x, y) = for (key, val) in enumerate(d)
     d[key] = swept(val, x, y)
 end
-
 
 function handler(req, res)
     params = req |> HTTP.uri |> HTTP.query |> HTTP.unescape |> JSON.parse
@@ -90,23 +75,3 @@ function serve()
 end
 
 serve()
-
-# @call begin
-#     snap(
-#         simulate(
-#             rand(sz),
-#             patterns,
-#             BoxBlur(sz),
-#             100
-#         ),
-#     )
-# end
-
-
-# patterns = [
-#     SimplePattern(Params(2, 4, 0.01), sz),
-#     SimplePattern(Params(5, 10, 0.02), sz),
-#     SimplePattern(Params(10, 20, 0.03), sz),
-#     SimplePattern(Params(20, 40, 0.04), sz),
-#     SimplePattern(Params(100, 200, 0.05), sz),
-# ]

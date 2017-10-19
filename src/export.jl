@@ -13,13 +13,12 @@ function saveframe(frame::Array{T, 1}, path) where T
     saveframe(reshape(frame, 1, length(frame)), path)
 end
 
-function snapshotaveframe(frame::Array{T, 3}, path) where T
+function saveframe(frame::Array{T, 3}, path) where T
     colors = mapslices(rgb -> RGB(rgb...), frame, 3)
     saveframe(squeeze(colors, 3), path)
 end
 
 snapshot(frame, tag) = saveframe(frame, "snapshots/$tag.png")
-
 snap(frame) = snapshot(frame, "latest")
 
 function saveframes(frames)

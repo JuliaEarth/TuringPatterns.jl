@@ -10,13 +10,13 @@ end
 "Efficient region queries over a summed-area table. Note that
 the `table` should be padded by one strip of zeros on the left
 and top sides."
-function query end
+function regionquery end
 
-function query(table::Vector, ylo, yhi)
+function regionquery(table::Vector, ylo, yhi)
     table[yhi+1] - table[ylo]
 end
 
-function query(table::Matrix, ylo, yhi, xlo, xhi)
+function regionquery(table::Matrix, ylo, yhi, xlo, xhi)
     yhi += 1
     xhi += 1
     a = table[yhi, xhi]
@@ -70,7 +70,7 @@ function blur!(b::BoxBlur{2}, out, r, edge)
         ylo, yhi = max(1, y-r), min(y+r, sy)
         xlo, xhi = max(1, x-r), min(x+r, sx)
         s = scale(edge, r, ylo, yhi, xlo, xhi)
-        out[y, x] = s * query(b.table, ylo, yhi, xlo, xhi)
+        out[y, x] = s * regionquery(b.table, ylo, yhi, xlo, xhi)
     end
     out
 end
@@ -80,7 +80,7 @@ function blur!(b::BoxBlur{1}, out, r, edge)
     for y in 1:sy
         ylo, yhi = max(1, y-r), min(y+r, sy)
         s = scale(edge, r, ylo, yhi)
-        out[y] = s * query(b.table, ylo, yhi)
+        out[y] = s * regionquery(b.table, ylo, yhi)
     end
     out
 end
