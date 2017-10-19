@@ -1,4 +1,6 @@
-# TuringPatterns
+# Multi-Scale Turing Patterns
+
+A quick example:
 
 ```julia
 using TuringPatterns
@@ -27,6 +29,7 @@ saveframe(
 run(`open picture.png`)
 ```
 
+You should see something like this:
 
 ![A multi-scale Turing pattern](picture.png)
 
