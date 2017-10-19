@@ -25,7 +25,7 @@ saveframe(
     "picture.png"
 )
 
-# `open` on macos or `xdg-open` on linux
+# `open` on macOS or `xdg-open` on linux
 run(`open picture.png`)
 ```
 
