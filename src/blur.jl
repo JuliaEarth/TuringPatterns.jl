@@ -50,19 +50,19 @@ abstract type Blur end
 
 struct BoxBlur{N} <: Blur
     table::Array{Float64, N}
-    view::SubArray
+    tableview::SubArray
     function BoxBlur{N}(sz) where {N}
         # Create a sum table padded with zeros on the starting side
         table = zeros(map(x->x+1, sz))
-        v = view(table, map(x -> (1:x)+1, sz)...)
-        new(table, v)
+        tableview = view(table, map(x -> (1:x)+1, sz)...)
+        new(table, tableview)
     end
 end
 BoxBlur(sz) = BoxBlur{length(sz)}(sz)
 
 # Preparing a blur happens once per image. We can subsequently
 # blur the same image efficiently at multiple scales.
-prepare!(b::BoxBlur, arr) = sumtable!(b.view, arr)
+prepare!(b::BoxBlur, arr) = sumtable!(b.tableview, arr)
 
 function blur!(b::BoxBlur{2}, out, r, edge)
     (sy, sx) = size(out)

@@ -13,12 +13,12 @@ end
 
 function scale01!(arr)
     lo, hi = extrema(arr)
-    scale = hi == lo ? 0 : 1 / (hi - lo)
+    scale = hi == lo ? zero(lo) : one(lo) / (hi - lo)
     @. arr = scale * (arr - lo)
 end
 scale01(arr) = scale01!(copy(arr))
 
-signed_scale01!(arr) = @. arr = $scale01!(arr) * 2 - 1
+signed_scale01!(arr) = arr .= scale01!(arr) .* 2 .- 1
 
 # currently unused, but may come in useful:
 # clamp01!(arr) = clamp!(arr, 0, 1)
