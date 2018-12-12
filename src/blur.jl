@@ -2,7 +2,7 @@
 function sumtable!(table, arr)
     out = arr
     for n in 1:ndims(table)
-        out = cumsum!(table, out, n)
+        out = cumsum!(table, out, dims = n)
     end
     out
 end
@@ -54,7 +54,7 @@ struct BoxBlur{N} <: Blur
     function BoxBlur{N}(sz) where {N}
         # Create a sum table padded with zeros on the starting side
         table = zeros(map(x->x+1, sz))
-        tableview = view(table, map(x -> (1:x)+1, sz)...)
+        tableview = view(table, map(x -> (1:x) .+ 1, sz)...)
         new(table, tableview)
     end
 end

@@ -17,7 +17,7 @@ patterns = [
 
 saveframe(
     simulate(
-        rand(sz),    # initial conditions
+        rand(sz...),    # initial conditions
         patterns,    # patterns
         BoxBlur(sz), # blur
         100          # iterations
