@@ -35,7 +35,7 @@ You should see something like this:
 
 ## Integration with GeoStats.jl
 
-Multiple images can be generated using the GeoStats.jl API:
+Multiple images can be generated using:
 
 ```julia
 using GeoStats
@@ -43,7 +43,7 @@ using TuringPatterns
 using Plots
 
 # define simulation problem for a variable "z"
-# and ask for 100 realizations (i.e. images)
+# request 100 realizations (i.e. images)
 problem = SimulationProblem(RegularGrid{Float64}(200,200), :z => Float64, 100)
 
 # solver with default parameters
