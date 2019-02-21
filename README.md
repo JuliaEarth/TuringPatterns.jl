@@ -43,8 +43,8 @@ using TuringPatterns
 using Plots
 
 # define simulation problem for a variable "z"
-# request 100 realizations (i.e. images)
-problem = SimulationProblem(RegularGrid{Float64}(200,200), :z => Float64, 100)
+# request 3 realizations (i.e. images)
+problem = SimulationProblem(RegularGrid{Float64}(200,200), :z => Float64, 3)
 
 # solver with default parameters
 solver = TuringPat()
