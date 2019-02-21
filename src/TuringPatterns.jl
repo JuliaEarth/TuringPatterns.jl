@@ -103,4 +103,7 @@ function simulate(initial, patterns, blur, iters)
     scale01(sim.fluid)
 end
 
+# GeoStats.jl API
+include("geostats.jl")
+
 end # module
