@@ -2,8 +2,8 @@
 # Licensed under the MIT License. See LICENCE in the project root.
 # ------------------------------------------------------------------
 
-using GeoStatsBase
-import GeoStatsBase: preprocess, solve_single
+using .GeoStatsBase
+import .GeoStatsBase: preprocess, solve_single
 
 export TuringPat, PARAMS1
 

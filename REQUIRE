@@ -1,5 +1,5 @@
 julia 0.7
-GeoStatsBase
+Requires
 FixedPointNumbers
 FileIO
 ColorTypes

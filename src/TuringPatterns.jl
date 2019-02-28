@@ -4,6 +4,12 @@ include("util.jl")
 include("blur.jl")
 include("export.jl")
 
+# optionally load GeoStats.jl API
+using Requires
+function __init__()
+    @require GeoStatsBase="323cb8eb-fbf6-51c0-afd0-f8fba70507b2" include("geostats.jl")
+end
+
 export Pattern, Params, SimplePattern, CompositePattern
 export Sim, step!, simulate
 export Zero, Clamp, BoxBlur, IteratedBoxBlur
@@ -102,8 +108,5 @@ function simulate(initial, patterns, blur, iters)
     end
     scale01(sim.fluid)
 end
-
-# GeoStats.jl API
-include("geostats.jl")
 
 end # module
