@@ -31,7 +31,29 @@ run(`open picture.png`)
 
 You should see something like this:
 
-![A multi-scale Turing pattern](picture.png)
+![A multi-scale Turing pattern](docs/picture.png)
+
+## Integration with GeoStats.jl
+
+Multiple images can be generated using:
+
+```julia
+using GeoStats
+using TuringPatterns
+using Plots
+
+# define simulation problem for a variable "z"
+# request 3 realizations (i.e. images)
+problem = SimulationProblem(RegularGrid{Float64}(200,200), :z => Float64, 3)
+
+# solver with default parameters
+solver = TuringPat()
+
+solution = solve(problem, solver)
+
+plot(solution)
+```
+![GeoStats.jl solution](docs/geostats.png)
 
 ## References
 
