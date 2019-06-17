@@ -12,7 +12,6 @@ Requires = "ae029012-a4dd-5104-9daa-d747884805df"
 
 [extras]
 GeoStatsBase = "323cb8eb-fbf6-51c0-afd0-f8fba70507b2"
-GeoStatsDevTools = "19e549d1-356f-5655-9f3d-c1d6136da705"
 ImageMagick = "6218d12a-5da1-5696-b52f-db25d2ecc6d1"
 Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
@@ -22,7 +21,7 @@ Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 VisualRegressionTests = "34922c18-7c2a-561c-bac1-01e79b2c4c92"
 
 [targets]
-test = ["GeoStatsBase", "Pkg", "GeoStatsDevTools", "VisualRegressionTests", "Plots", "ImageMagick", "QuartzImageIO", "Random", "Test"]
+test = ["GeoStatsBase", "Pkg", "VisualRegressionTests", "Plots", "ImageMagick", "QuartzImageIO", "Random", "Test"]
 
 [compat]
 julia = "1"
