@@ -24,8 +24,8 @@ VisualRegressionTests = "34922c18-7c2a-561c-bac1-01e79b2c4c92"
 test = ["GeoStatsBase", "Pkg", "VisualRegressionTests", "Plots", "ImageMagick", "QuartzImageIO", "Random", "Test"]
 
 [compat]
-ColorTypes = "^0.8"
-FileIO = "^1.0"
-FixedPointNumbers = "^0.6"
-Requires = "^0.5"
+ColorTypes = "0.8"
+FileIO = "1.0"
+FixedPointNumbers = "0.6"
+Requires = "0.5"
 julia = "1"
