@@ -10,6 +10,13 @@ FixedPointNumbers = "53c48c17-4a7d-5ca2-90c5-79b7896eea93"
 Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 Requires = "ae029012-a4dd-5104-9daa-d747884805df"
 
+[compat]
+ColorTypes = "0.8"
+FileIO = "1.0"
+FixedPointNumbers = "0.6"
+Requires = "0.5, 1.0"
+julia = "1"
+
 [extras]
 GeoStatsBase = "323cb8eb-fbf6-51c0-afd0-f8fba70507b2"
 ImageMagick = "6218d12a-5da1-5696-b52f-db25d2ecc6d1"
@@ -22,10 +29,3 @@ VisualRegressionTests = "34922c18-7c2a-561c-bac1-01e79b2c4c92"
 
 [targets]
 test = ["GeoStatsBase", "Pkg", "VisualRegressionTests", "Plots", "ImageMagick", "QuartzImageIO", "Random", "Test"]
-
-[compat]
-ColorTypes = "0.8"
-FileIO = "1.0"
-FixedPointNumbers = "0.6"
-Requires = "0.5"
-julia = "1"
