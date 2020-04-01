@@ -3,7 +3,7 @@
 # ------------------------------------------------------------------
 
 using .GeoStatsBase
-import .GeoStatsBase: preprocess, solve_single
+import .GeoStatsBase: preprocess, solvesingle
 
 export TuringPat, PARAMS1
 
@@ -45,47 +45,49 @@ function preprocess(problem::SimulationProblem, solver::TuringPat)
   # result of preprocessing
   preproc = Dict{Symbol,NamedTuple}()
 
-  for (var, V) in variables(problem)
-    # get user parameters
-    if var ∈ keys(solver.params)
-      varparams = solver.params[var]
-    else
-      varparams = TuringPatParam()
+  for covars in covariables(problem, solver)
+    for var in covars.names
+      # get user parameters
+      varparams = covars.params[(var,)]
+
+      # determine simulation parameters
+      params = varparams.params
+      blur = varparams.blur(sz)
+      edge = varparams.edge()
+      iter = varparams.iter
+
+      # construct patterns from parameters
+      patterns = [SimplePattern(param, sz) for param in params]
+
+      preproc[var] = (patterns=patterns,blur=blur,edge=edge,iter=iter)
     end
-
-    # determine simulation parameters
-    params = varparams.params
-    blur = varparams.blur(sz)
-    edge = varparams.edge()
-    iter = varparams.iter
-
-    # construct patterns from parameters
-    patterns = [SimplePattern(param, sz) for param in params]
-
-    preproc[var] = (patterns=patterns,blur=blur,edge=edge,iter=iter)
   end
 
   preproc
 end
 
-function solve_single(problem::SimulationProblem, var::Symbol,
-                      solver::TuringPat, preproc)
+function solvesingle(problem::SimulationProblem, covars::NamedTuple,
+                     solver::TuringPat, preproc)
   # retrieve domain size
   sz = size(domain(problem))
 
-  # unpack preprocessed parameters
-  patterns, blur, edge, iter = preproc[var]
+  varreal = map(covars.names) do var
+    # unpack preprocessed parameters
+    patterns, blur, edge, iter = preproc[var]
 
-  # determine result type
-  V = variables(problem)[var]
+    # determine result type
+    V = variables(problem)[var]
 
-  # perform simulation
-  sim = Sim(rand(V, sz), patterns, edge, blur)
-  for i in 1:iter
-    step!(sim)
+    # perform simulation
+    sim = Sim(rand(V, sz), patterns, edge, blur)
+    for i in 1:iter
+      step!(sim)
+    end
+    real = scale01(sim.fluid)
+
+    # flatten result
+    var => vec(real)
   end
-  real = scale01(sim.fluid)
 
-  # flatten result
-  vec(real)
+  Dict(varreal)
 end
