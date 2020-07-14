@@ -1,7 +1,6 @@
 using TuringPatterns
 using GeoStatsBase
-using Plots; gr()
-using VisualRegressionTests
+using Plots, VisualRegressionTests
 using Test, Pkg, Random
 
 # workaround GR warnings
@@ -23,7 +22,7 @@ end
   end
 
   @testset "GeoStats.jl API" begin
-    problem = SimulationProblem(RegularGrid{Float64}(200,200), :z => Float64, 3)
+    problem = SimulationProblem(RegularGrid(200,200), :z => Float64, 3)
 
     solver = TuringPat()
 
@@ -31,7 +30,7 @@ end
     solution = solve(problem, solver)
 
     if visualtests
-      @plottest plot(solution,size=(1000,300)) joinpath(datadir,"GeoStatsAPI.png") !istravis
+      @plottest plot(solution,size=(900,300)) joinpath(datadir,"GeoStatsAPI.png") !istravis
     end
   end
 end
