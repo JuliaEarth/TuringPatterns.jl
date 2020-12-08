@@ -22,12 +22,9 @@ end
   end
 
   @testset "GeoStats.jl API" begin
-    problem = SimulationProblem(RegularGrid(200,200), :z => Float64, 3)
-
-    solver = TuringPat()
-
     Random.seed!(2019)
-    solution = solve(problem, solver)
+    problem = SimulationProblem(RegularGrid(200,200), :z => Float64, 3)
+    solution = solve(problem, TPS())
 
     if visualtests
       @plottest plot(solution,size=(900,300)) joinpath(datadir,"GeoStatsAPI.png") !istravis

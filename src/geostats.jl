@@ -5,7 +5,7 @@
 using .GeoStatsBase
 import .GeoStatsBase: preprocess, solvesingle
 
-export TuringPat, PARAMS1
+export TPS, PARAMS1
 
 const PARAMS1 = [
   Params(2,  4,   0.01),
@@ -16,7 +16,7 @@ const PARAMS1 = [
 ]
 
 """
-    TuringPat(var₁=>param₁, var₂=>param₂, ...)
+    TPS(var₁=>param₁, var₂=>param₂, ...)
 
 Turing pattern simulation.
 
@@ -31,14 +31,14 @@ Turing pattern simulation.
 
 Turing 1952. *The chemical basis of morphogenesis.*
 """
-@simsolver TuringPat begin
+@simsolver TPS begin
   @param params = PARAMS1
   @param blur = BoxBlur
   @param edge = Clamp
   @param iter = 100
 end
 
-function preprocess(problem::SimulationProblem, solver::TuringPat)
+function preprocess(problem::SimulationProblem, solver::TPS)
   # retrieve domain size
   sz = size(domain(problem))
 
@@ -66,8 +66,7 @@ function preprocess(problem::SimulationProblem, solver::TuringPat)
   preproc
 end
 
-function solvesingle(problem::SimulationProblem, covars::NamedTuple,
-                     solver::TuringPat, preproc)
+function solvesingle(problem::SimulationProblem, covars::NamedTuple, ::TPS, preproc)
   # retrieve domain size
   sz = size(domain(problem))
 
