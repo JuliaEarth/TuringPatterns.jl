@@ -48,10 +48,8 @@ using Plots
 # request 3 realizations (i.e. images)
 problem = SimulationProblem(RegularGrid{Float64}(200,200), :z => Float64, 3)
 
-# solver with default parameters
-solver = TuringPat()
-
-solution = solve(problem, solver)
+# solve problem with Turing patterns solver
+solution = solve(problem, TPS())
 
 plot(solution)
 ```
