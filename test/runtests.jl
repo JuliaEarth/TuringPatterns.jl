@@ -7,14 +7,14 @@ using Test, Pkg, Random
 ENV["GKSwstype"] = "100"
 
 # environment settings
+isCI = "CI" ∈ keys(ENV)
 islinux = Sys.islinux()
-istravis = "TRAVIS" ∈ keys(ENV)
-datadir = joinpath(@__DIR__,"data")
-visualtests = !istravis || (istravis && islinux)
-if !istravis
+visualtests = !isCI || (isCI && islinux)
+if !isCI
   Pkg.add("Gtk")
   using Gtk
 end
+datadir = joinpath(@__DIR__,"data")
 
 @testset "TuringPatterns.jl" begin
   @testset "Basic usage" begin
@@ -27,7 +27,7 @@ end
     solution = solve(problem, TPS())
 
     if visualtests
-      @plottest plot(solution,size=(900,300)) joinpath(datadir,"GeoStatsAPI.png") !istravis
+      @plottest plot(solution,size=(900,300)) joinpath(datadir,"GeoStatsAPI.png") !isCI
     end
   end
 end
