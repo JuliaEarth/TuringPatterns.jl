@@ -1,6 +1,6 @@
 # Multi-Scale Turing Patterns
 
-[![][travis-img]][travis-url] [![][codecov-img]][codecov-url]
+[![][build-img]][build-url] [![][codecov-img]][codecov-url]
 
 A quick example:
 
