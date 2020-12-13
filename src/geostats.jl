@@ -70,12 +70,14 @@ function solvesingle(problem::SimulationProblem, covars::NamedTuple, ::TPS, prep
   # retrieve domain size
   sz = size(domain(problem))
 
+  mactypeof = Dict(name(v) => mactype(v) for v in variables(problem))
+
   varreal = map(covars.names) do var
     # unpack preprocessed parameters
     patterns, blur, edge, iter = preproc[var]
 
-    # determine result type
-    V = variables(problem)[var]
+    # determine value type
+    V = mactypeof[var]
 
     # perform simulation
     sim = Sim(rand(V, sz), patterns, edge, blur)
