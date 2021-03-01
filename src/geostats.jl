@@ -2,6 +2,7 @@
 # Licensed under the MIT License. See LICENCE in the project root.
 # ------------------------------------------------------------------
 
+using .Meshes
 using .GeoStatsBase
 import .GeoStatsBase: preprocess, solvesingle
 
