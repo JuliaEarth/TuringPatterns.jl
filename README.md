@@ -46,7 +46,7 @@ using Plots
 
 # define simulation problem for a variable "z"
 # request 3 realizations (i.e. images)
-problem = SimulationProblem(RegularGrid{Float64}(200,200), :z => Float64, 3)
+problem = SimulationProblem(CartesianGrid(200,200), :z => Float64, 3)
 
 # solve problem with Turing patterns solver
 solution = solve(problem, TPS())
