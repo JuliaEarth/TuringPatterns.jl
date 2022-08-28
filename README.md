@@ -60,8 +60,8 @@ plot(solution)
 - [McCabe, J. Cyclic Symmetric Multi-Scale Turing Patterns](http://www.jonathanmccabe.com/Cyclic_Symmetric_Multi-Scale_Turing_Patterns.pdf)
 - [Example gallery 1](https://www.flickr.com/photos/jonathanmccabe/sets/72157644907151060) and [Example gallery 2](https://www.flickr.com/photos/jonathanmccabe/sets/72157673446623356)
 
-[build-img]: https://img.shields.io/github/workflow/status/yurivish/TuringPatterns.jl/CI
-[build-url]: https://github.com/yurivish/TuringPatterns.jl/actions
+[build-img]: https://img.shields.io/github/workflow/status/JuliaEarth/TuringPatterns.jl/CI
+[build-url]: https://github.com/JuliaEarth/TuringPatterns.jl/actions
 
-[codecov-img]: https://codecov.io/gh/yurivish/TuringPatterns.jl/branch/master/graph/badge.svg
-[codecov-url]: https://codecov.io/gh/yurivish/TuringPatterns.jl
+[codecov-img]: https://codecov.io/gh/JuliaEarth/TuringPatterns.jl/branch/master/graph/badge.svg
+[codecov-url]: https://codecov.io/gh/JuliaEarth/TuringPatterns.jl
