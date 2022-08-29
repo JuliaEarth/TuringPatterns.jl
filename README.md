@@ -42,14 +42,20 @@ Multiple images can be generated using:
 ```julia
 using GeoStats
 using TuringPatterns
-using Plots
+
+using Plots, GeoStatsPlots
 
 # define simulation problem for a variable "z"
 # request 3 realizations (i.e. images)
 problem = SimulationProblem(CartesianGrid(200,200), :z => Float64, 3)
 
-# solve problem with Turing patterns solver
-solution = solve(problem, TPS())
+# define Turing patterns solver
+# see docstring for options
+solver  = TPS()
+
+# solve problem over any domain
+# that has grid topology
+solution = solve(problem, solver)
 
 plot(solution)
 ```

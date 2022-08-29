@@ -2,12 +2,6 @@
 # Licensed under the MIT License. See LICENCE in the project root.
 # ------------------------------------------------------------------
 
-using .Meshes
-using .GeoStatsBase
-import .GeoStatsBase: preprocess, solvesingle
-
-export TPS, PARAMS1
-
 const PARAMS1 = [
   Params(2,  4,   0.01),
   Params(5,  10,  0.02),
@@ -40,8 +34,15 @@ Turing 1952. *The chemical basis of morphogenesis.*
 end
 
 function preprocess(problem::SimulationProblem, solver::TPS)
-  # retrieve domain size
-  sz = size(domain(problem))
+  # retrieve domain of simulation
+  pdomain = domain(problem)
+  ptopo   = topology(pdomain)
+
+  # assert grid topology
+  @assert ptopo isa GridTopology "simulation only defined over grid topology"
+
+  # retrieve simulation size
+  sz = size(ptopo)
 
   # result of preprocessing
   preproc = Dict{Symbol,NamedTuple}()
@@ -69,7 +70,7 @@ end
 
 function solvesingle(problem::SimulationProblem, covars::NamedTuple, ::TPS, preproc)
   # retrieve domain size
-  sz = size(domain(problem))
+  sz = size(topology(domain(problem)))
 
   mactypeof = Dict(name(v) => mactype(v) for v in variables(problem))
 

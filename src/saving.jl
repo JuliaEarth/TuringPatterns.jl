@@ -1,5 +1,3 @@
-using FixedPointNumbers, FileIO, ColorTypes#, ColorVectorSpace, ImageCore
-
 function saveframe(frame::Array{T, 2}, path) where T<:Color
     save(path, frame)
 end
