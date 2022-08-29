@@ -3,8 +3,6 @@ module TuringPatterns
 using Meshes
 using GeoStatsBase
 
-using FixedPointNumbers
-
 import GeoStatsBase: preprocess, solvesingle
 
 include("util.jl")
