@@ -16,10 +16,6 @@ visualtests = !isCI || (isCI && islinux)
 datadir = joinpath(@__DIR__,"data")
 
 @testset "TuringPatterns.jl" begin
-  @testset "Basic usage" begin
-    # TODO:
-  end
-
   @testset "GeoStats.jl API" begin
     Random.seed!(2019)
     problem = SimulationProblem(CartesianGrid(200,200), :z => Float64, 3)

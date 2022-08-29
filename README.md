@@ -2,7 +2,7 @@
 
 [![][build-img]][build-url] [![][codecov-img]][codecov-url]
 
-A quick example:
+## Low-level API
 
 ```julia
 using TuringPatterns
@@ -17,25 +17,16 @@ patterns = [
     SimplePattern(Params(50,  100, 0.05), sz),
 ]
 
-saveframe(
-    simulate(
-        rand(sz...),    # initial conditions
-        patterns,    # patterns
-        BoxBlur(sz), # blur
-        100          # iterations
-    ),
-    "picture.png"
+simulate(
+    rand(sz...), # initial conditions
+    patterns,    # patterns
+    BoxBlur(sz), # blur
+    100          # iterations
 )
-
-# `open` on macOS or `xdg-open` on linux
-run(`open picture.png`)
 ```
+![docs/picture.png](docs/picture.png)
 
-You should see something like this:
-
-![A multi-scale Turing pattern](docs/picture.png)
-
-## Integration with GeoStats.jl
+## High-level API
 
 Multiple images can be generated using:
 
@@ -59,7 +50,7 @@ solution = solve(problem, solver)
 
 plot(solution)
 ```
-![GeoStats.jl solution](docs/geostats.png)
+![docs/geostats.png](docs/geostats.png)
 
 ## References
 
