@@ -1,6 +1,9 @@
-# Multi-Scale Turing Patterns
+# TuringPatterns.jl
 
 [![][build-img]][build-url] [![][codecov-img]][codecov-url]
+
+Multi-scale Turing pattern simulation solver for the
+[GeoStats.jl](https://github.com/JuliaEarth/GeoStats.jl) framework.
 
 ## Low-level API
 
