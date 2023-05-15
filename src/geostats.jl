@@ -2,13 +2,8 @@
 # Licensed under the MIT License. See LICENCE in the project root.
 # ------------------------------------------------------------------
 
-const PARAMS1 = [
-  Params(2,  4,   0.01),
-  Params(5,  10,  0.02),
-  Params(10, 20,  0.03),
-  Params(20, 40,  0.04),
-  Params(50, 100, 0.05)
-]
+const PARAMS1 =
+  [Params(2, 4, 0.01), Params(5, 10, 0.02), Params(10, 20, 0.03), Params(20, 40, 0.04), Params(50, 100, 0.05)]
 
 """
     TPS(var₁=>param₁, var₂=>param₂, ...)
@@ -36,7 +31,7 @@ end
 function preprocess(problem::SimulationProblem, solver::TPS)
   # retrieve domain of simulation
   pdomain = domain(problem)
-  ptopo   = topology(pdomain)
+  ptopo = topology(pdomain)
 
   # assert grid topology
   @assert ptopo isa GridTopology "simulation only defined over grid topology"
@@ -61,7 +56,7 @@ function preprocess(problem::SimulationProblem, solver::TPS)
       # construct patterns from parameters
       patterns = [SimplePattern(param, sz) for param in params]
 
-      preproc[var] = (patterns=patterns,blur=blur,edge=edge,iter=iter)
+      preproc[var] = (patterns=patterns, blur=blur, edge=edge, iter=iter)
     end
   end
 

@@ -1,20 +1,20 @@
 # Until Base has a version like this one...
 function findmin(f::Function, itr)
-    local out
-    best = Inf
-    for x in itr
-        score = f(x)
-        if score < best
-            out, best = x, score
-        end
+  local out
+  best = Inf
+  for x in itr
+    score = f(x)
+    if score < best
+      out, best = x, score
     end
-    out
+  end
+  out
 end
 
 function scale01!(arr)
-    lo, hi = extrema(arr)
-    scale = hi == lo ? zero(lo) : one(lo) / (hi - lo)
-    @. arr = scale * (arr - lo)
+  lo, hi = extrema(arr)
+  scale = hi == lo ? zero(lo) : one(lo) / (hi - lo)
+  @. arr = scale * (arr - lo)
 end
 scale01(arr) = scale01!(copy(arr))
 
