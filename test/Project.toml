@@ -10,5 +10,5 @@ ReferenceTests = "324d217c-45ce-50fc-942e-d289b448e8cf"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [compat]
-GR = "=0.59.0"
-Plots = "=1.22.4"
+GR = "=0.72.7"
+Plots = "=1.38.16"
