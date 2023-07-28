@@ -1,7 +1,7 @@
 name = "TuringPatterns"
 uuid = "fde5428d-3bf0-5ade-b94a-d334303c4d77"
 author = "Yuri Vishnevsky"
-version = "0.4.8"
+version = "0.5.0"
 
 [deps]
 GeoStatsBase = "323cb8eb-fbf6-51c0-afd0-f8fba70507b2"
@@ -9,6 +9,6 @@ Meshes = "eacbb407-ea5a-433e-ab97-5258b1ca43fa"
 Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [compat]
-GeoStatsBase = "0.31"
-Meshes = "0.31, 0.32"
-julia = "1.6"
+GeoStatsBase = "0.32"
+Meshes = "0.33"
+julia = "1.9"
