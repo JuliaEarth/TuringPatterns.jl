@@ -45,7 +45,7 @@ function preprocess(problem::SimulationProblem, solver::TPS)
   for covars in covariables(problem, solver)
     for var in covars.names
       # get user parameters
-      varparams = covars.params[(var,)]
+      varparams = covars.params[Set([var])]
 
       # determine simulation parameters
       params = varparams.params
@@ -67,14 +67,12 @@ function solvesingle(problem::SimulationProblem, covars::NamedTuple, ::TPS, prep
   # retrieve domain size
   sz = size(topology(domain(problem)))
 
-  mactypeof = Dict(name(v) => mactype(v) for v in variables(problem))
-
-  varreal = map(covars.names) do var
+  varreal = map(collect(covars.names)) do var
     # unpack preprocessed parameters
     patterns, blur, edge, iter = preproc[var]
 
     # determine value type
-    V = mactypeof[var]
+    V = variables(problem)[var]
 
     # perform simulation
     sim = Sim(rand(V, sz), patterns, edge, blur)
