@@ -9,7 +9,4 @@ export Zero, Clamp, BoxBlur, IteratedBoxBlur
 export Sim, step!, simulate
 export scale01
 
-# GeoStats.jl API
-export TPS, PARAMS1
-
 end # module
