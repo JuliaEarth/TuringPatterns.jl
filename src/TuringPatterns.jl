@@ -1,14 +1,8 @@
 module TuringPatterns
 
-using Meshes
-using GeoStatsBase
-
-import GeoStatsBase: preprocess, solvesingle
-
 include("util.jl")
 include("blur.jl")
 include("simulation.jl")
-include("geostats.jl")
 
 export Pattern, Params, SimplePattern, CompositePattern
 export Zero, Clamp, BoxBlur, IteratedBoxBlur

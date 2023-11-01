@@ -29,32 +29,6 @@ simulate(
 ```
 ![docs/picture.png](docs/picture.png)
 
-## High-level API
-
-Multiple images can be generated using:
-
-```julia
-using GeoStats
-using TuringPatterns
-
-using Plots, GeoStatsPlots
-
-# define simulation problem for a variable "z"
-# request 3 realizations (i.e. images)
-problem = SimulationProblem(CartesianGrid(200,200), :z => Float64, 3)
-
-# define Turing patterns solver
-# see docstring for options
-solver  = TPS()
-
-# solve problem over any domain
-# that has grid topology
-solution = solve(problem, solver)
-
-plot(solution)
-```
-![docs/geostats.png](docs/geostats.png)
-
 ## References
 
 - [McCabe, J. Cyclic Symmetric Multi-Scale Turing Patterns](http://www.jonathanmccabe.com/Cyclic_Symmetric_Multi-Scale_Turing_Patterns.pdf)
