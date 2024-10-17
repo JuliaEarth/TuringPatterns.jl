@@ -1,7 +1,7 @@
 name = "TuringPatterns"
 uuid = "fde5428d-3bf0-5ade-b94a-d334303c4d77"
 author = "Yuri Vishnevsky"
-version = "1.0.0"
+version = "1.0.1"
 
 [compat]
 julia = "1.9"
